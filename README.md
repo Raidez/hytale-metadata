@@ -124,14 +124,14 @@ The interaction also supports an `Else` property, defining what happens when non
 
 ```
 
-## Calling an interaction from a metadata value
+## Command meta for manipulating metadata
 
-Use the `CallMetadata` interaction to invoke another interaction by name, using the value stored in a metadata key.
+The mod also adds a new command, `metadata` (also `meta` alias), to manipulate metadata values via commands.
 
-```json
-{
-    "Type": "CallMetadata",
-    "Target": "Self",
-    "Key": "Name"
-}
-```
+`/metadata <operation> <key> [value]`
+
+| Operation | Description                                    |
+| --------- | ---------------------------------------------- |
+| `get`     | Get the metadata value.                        |
+| `set`     | Set the metadata value to a specific value.    |
+| `reset`   | Reset the metadata value to its default value. |

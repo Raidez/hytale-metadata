@@ -12,7 +12,7 @@ import com.hypixel.hytale.codec.schema.config.Schema;
 
 import io.netty.handler.codec.CodecException;
 
-public class MetadataValueCodec implements Codec<Object> {
+public class AnyCodec implements Codec<Object> {
 
     @Override
     public Schema toSchema(SchemaContext context) {
