@@ -1,4 +1,4 @@
-package dev.hytalemodding.commands;
+package dev.raidez.commands;
 
 import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.component.Store;
@@ -11,15 +11,17 @@ import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.world.World;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 
-import dev.hytalemodding.components.MetadataComponent;
+import dev.raidez.components.MetadataComponent;
 
-public class MetadataGetCommand extends AbstractPlayerCommand {
+public class MetadataSetCommand extends AbstractPlayerCommand {
 
     private final RequiredArg<String> keyArg;
+    private final RequiredArg<String> valueArg;
 
-    public MetadataGetCommand() {
-        super("get", "Get metadata for entities");
+    public MetadataSetCommand() {
+        super("set", "Set metadata for entities");
         this.keyArg = this.withRequiredArg("key", "Metadata key", ArgTypes.STRING);
+        this.valueArg = this.withRequiredArg("value", "Metadata value", ArgTypes.STRING);
     }
 
     @Override
@@ -31,12 +33,11 @@ public class MetadataGetCommand extends AbstractPlayerCommand {
             World world) {
 
         var key = commandContext.get(keyArg);
+        var value = commandContext.get(valueArg);
 
         var metadata = store.ensureAndGetComponent(ref, MetadataComponent.getComponentType());
-
-        var value = metadata.get(key);
-        commandContext.sendMessage(Message.raw(String.format("Get %s: %s", key, value)));
-
+        metadata.put(key, value);
+        commandContext.sendMessage(Message.raw(String.format("Set %s: %s", key, value)));
     }
 
 }

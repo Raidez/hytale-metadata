@@ -1,4 +1,4 @@
-package dev.hytalemodding.components;
+package dev.raidez.components;
 
 import java.util.Map;
 
@@ -10,7 +10,7 @@ import com.hypixel.hytale.component.Component;
 import com.hypixel.hytale.component.ComponentType;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 
-import dev.hytalemodding.ExamplePlugin;
+import dev.raidez.MetadataPlugin;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 
 public class MetadataComponent implements Component<EntityStore> {
@@ -18,7 +18,7 @@ public class MetadataComponent implements Component<EntityStore> {
     private Map<String, String> metadataArg;
 
     public static ComponentType<EntityStore, MetadataComponent> getComponentType() {
-        return ExamplePlugin.get().getMetadataComponent();
+        return MetadataPlugin.get().getMetadataComponent();
     }
 
     public static final BuilderCodec<MetadataComponent> CODEC = BuilderCodec

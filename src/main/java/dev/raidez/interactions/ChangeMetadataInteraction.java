@@ -1,4 +1,4 @@
-package dev.hytalemodding.interactions;
+package dev.raidez.interactions;
 
 import com.hypixel.hytale.codec.Codec;
 import com.hypixel.hytale.codec.KeyedCodec;
@@ -9,8 +9,8 @@ import com.hypixel.hytale.server.core.entity.InteractionContext;
 import com.hypixel.hytale.server.core.modules.interaction.interaction.CooldownHandler;
 import com.hypixel.hytale.server.core.modules.interaction.interaction.config.SimpleInstantInteraction;
 
-import dev.hytalemodding.components.MetadataComponent;
-import dev.hytalemodding.enums.MetadataOperation;
+import dev.raidez.components.MetadataComponent;
+import dev.raidez.enums.MetadataOperation;
 
 public class ChangeMetadataInteraction extends SimpleInstantInteraction {
 

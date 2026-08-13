@@ -1,4 +1,4 @@
-package dev.hytalemodding.interactions;
+package dev.raidez.interactions;
 
 import com.hypixel.hytale.codec.Codec;
 import com.hypixel.hytale.codec.KeyedCodec;
@@ -9,7 +9,7 @@ import com.hypixel.hytale.server.core.entity.InteractionContext;
 import com.hypixel.hytale.server.core.modules.interaction.interaction.CooldownHandler;
 import com.hypixel.hytale.server.core.modules.interaction.interaction.config.SimpleInstantInteraction;
 
-import dev.hytalemodding.enums.MatcherType;
+import dev.raidez.enums.MatcherType;
 
 public class MetadataMatcher extends SimpleInstantInteraction {
 

@@ -1,4 +1,4 @@
-package dev.hytalemodding.commands;
+package dev.raidez.commands;
 
 import com.hypixel.hytale.server.core.command.system.basecommands.AbstractCommandCollection;
 

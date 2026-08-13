@@ -1,4 +1,4 @@
-package dev.hytalemodding.enums;
+package dev.raidez.enums;
 
 public enum MatcherType {
     EQUALS,

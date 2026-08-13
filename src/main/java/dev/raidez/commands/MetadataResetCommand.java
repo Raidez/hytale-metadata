@@ -1,4 +1,4 @@
-package dev.hytalemodding.commands;
+package dev.raidez.commands;
 
 import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.component.Store;
@@ -11,7 +11,7 @@ import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.world.World;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 
-import dev.hytalemodding.components.MetadataComponent;
+import dev.raidez.components.MetadataComponent;
 
 public class MetadataResetCommand extends AbstractPlayerCommand {
 
