@@ -31,6 +31,11 @@ public class MetadataItemComponent implements Component<EntityStore> {
         this.defaultArg = "";
     }
 
+    public MetadataItemComponent(MetadataType typeArg, String defaultArg) {
+        this.typeArg = typeArg;
+        this.defaultArg = defaultArg;
+    }
+
     public MetadataItemComponent(MetadataItemComponent clone) {
         this.typeArg = clone.typeArg;
         this.defaultArg = clone.defaultArg;

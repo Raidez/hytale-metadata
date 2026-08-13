@@ -9,6 +9,7 @@ import com.hypixel.hytale.server.core.entity.InteractionContext;
 import com.hypixel.hytale.server.core.modules.interaction.interaction.CooldownHandler;
 import com.hypixel.hytale.server.core.modules.interaction.interaction.config.SimpleInstantInteraction;
 
+import dev.hytalemodding.components.MetadataComponent;
 import dev.hytalemodding.enums.MetadataOperation;
 
 public class ChangeMetadataInteraction extends SimpleInstantInteraction {
@@ -42,9 +43,45 @@ public class ChangeMetadataInteraction extends SimpleInstantInteraction {
             .build();
 
     @Override
-    protected void firstRun(InteractionType var1, InteractionContext var2, CooldownHandler var3) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'firstRun'");
+    protected void firstRun(
+            InteractionType interactionType,
+            InteractionContext interactionContext,
+            CooldownHandler cooldownHandler) {
+
+        var entity = interactionContext.getEntity();
+        var commandBuffer = interactionContext.getCommandBuffer();
+
+        var metadata = commandBuffer.ensureAndGetComponent(entity, MetadataComponent.getComponentType());
+
+        switch (operationArg) {
+            case SET:
+                metadata.put(keyArg, valueArg);
+                break;
+            case RESET:
+                metadata.put(keyArg, "");
+                break;
+            case COPY_FROM:
+                metadata.put(keyArg, metadata.get(valueArg));
+                break;
+            case INCREMENT:
+                metadata.put(keyArg,
+                        String.valueOf(Integer.parseInt(metadata.get(keyArg)) + Integer.parseInt(valueArg)));
+                break;
+            case DECREMENT:
+                metadata.put(keyArg,
+                        String.valueOf(Integer.parseInt(metadata.get(keyArg)) - Integer.parseInt(valueArg)));
+                break;
+            case TOGGLE:
+                metadata.put(keyArg, String.valueOf(!Boolean.parseBoolean(metadata.get(keyArg))));
+                break;
+            case CONCAT:
+                metadata.put(keyArg, metadata.get(keyArg) + valueArg);
+                break;
+            case CONCAT_FROM:
+                metadata.put(keyArg, metadata.get(keyArg) + metadata.get(valueArg));
+                break;
+        }
+
     }
 
 }

@@ -9,6 +9,8 @@ import com.hypixel.hytale.server.core.entity.InteractionContext;
 import com.hypixel.hytale.server.core.modules.interaction.interaction.CooldownHandler;
 import com.hypixel.hytale.server.core.modules.interaction.interaction.config.SimpleInstantInteraction;
 
+import dev.hytalemodding.components.MetadataComponent;
+
 public class MatchMetadataInteraction extends SimpleInstantInteraction {
 
     private String keyArg;
@@ -27,9 +29,22 @@ public class MatchMetadataInteraction extends SimpleInstantInteraction {
             .build();
 
     @Override
-    protected void firstRun(InteractionType var1, InteractionContext var2, CooldownHandler var3) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'firstRun'");
+    protected void firstRun(
+            InteractionType interactionType,
+            InteractionContext interactionContext,
+            CooldownHandler cooldownHandler) {
+
+        var entity = interactionContext.getEntity();
+        var commandBuffer = interactionContext.getCommandBuffer();
+
+        var metadata = commandBuffer.ensureAndGetComponent(entity, MetadataComponent.getComponentType());
+
+        var value = metadata.get(keyArg);
+        for (var matcher : matchersArg) {
+            if (matcher.matches(value)) {
+                matcher.firstRun(interactionType, interactionContext, cooldownHandler);
+            }
+        }
     }
 
 }
