@@ -7,6 +7,7 @@ import com.hypixel.hytale.server.core.command.system.CommandContext;
 import com.hypixel.hytale.server.core.command.system.arguments.system.RequiredArg;
 import com.hypixel.hytale.server.core.command.system.arguments.types.ArgTypes;
 import com.hypixel.hytale.server.core.command.system.basecommands.AbstractPlayerCommand;
+import com.hypixel.hytale.server.core.entity.entities.Player;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.world.World;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
@@ -30,8 +31,14 @@ public class MetadataGetCommand extends AbstractPlayerCommand {
             PlayerRef playerRef,
             World world) {
 
+        // Parse arguments
         var key = commandContext.get(keyArg);
 
+        var player = store.getComponent(ref, Player.getComponentType());
+        var inventory = player.getInventory();
+        var itemStack = inventory.getActiveHotbarItem();
+
+        // Get component
         var metadata = store.ensureAndGetComponent(ref, MetadataComponent.getComponentType());
 
         var value = metadata.get(key);

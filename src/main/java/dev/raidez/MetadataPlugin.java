@@ -6,6 +6,10 @@ import com.hypixel.hytale.server.core.plugin.JavaPlugin;
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 
+import dev.raidez.codecs.AnyCodec;
+import dev.raidez.codecs.BooleanCodec;
+import dev.raidez.codecs.NumberCodec;
+import dev.raidez.codecs.StringCodec;
 import dev.raidez.commands.MetadataCommand;
 import dev.raidez.components.MetadataComponent;
 import dev.raidez.interactions.ChangeMetadataInteraction;
@@ -24,6 +28,12 @@ public class MetadataPlugin extends JavaPlugin {
 
     @Override
     protected void setup() {
+
+        // Register codecs
+        // https://hytale-docs-mcp.craftserve.com/codecs/#polymorphic-types
+        AnyCodec.CODEC.register("String", StringCodec.class, StringCodec.CODEC);
+        AnyCodec.CODEC.register("Boolean", BooleanCodec.class, BooleanCodec.CODEC);
+        AnyCodec.CODEC.register("Number", NumberCodec.class, NumberCodec.CODEC);
 
         // Register components
         this.metadataComponent = this.getEntityStoreRegistry()
